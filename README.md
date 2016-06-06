@@ -3,4 +3,4 @@ A bot for Ultimate Tic-Tac-Toe game on http://theaigames.com/ and http://pub.the
 
 The code will be posted after the contest is over. It is written in Java.
 
-Bot name on both platforms is: Digimitsu
+Bot name on both platforms is: Digimitsu and CBSwagmentation.
