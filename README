@@ -1,0 +1,36 @@
+Nume echipa: CBSwagmentationFault
+Grupa: 322CB
+
+	Pentru aceasta etapa am implementat Minimax. Acesta functioneaza cu 
+un depth = 7 pentru mutarile de la inceputul jocului, deoarece au branch 
+factor mai mare, cu un depth = 5 pentru cazul in care sunt trimis catre 
+un patrat terminat si sunt multe mutari de ales, cu un depth de 8 cand am 
+mai putin de 4 mutari de ales si cu un depth de 7 in rest.
+
+	De asemenea, am folosit alpha-beta pruning, pentru 
+a optimiza algoritmul si pentru a reusi sa crestem adancimea de cautare. 
+Algoritmul simuleaza toate mutarile pana se ajunge in punctul in care 
+meciul este castigat/terminat sau depth este egal cu 0. Atunci cand 
+unul dintre playeri castiga, returnez un scor maxim pentru mine si un 
+scor minim pentru oponent. Pentru a castiga imediat, deoarece mai multe 
+mutari pot returna scorul maxim/minim, adun/scad depth din acest scor. 
+Deoarece cu cat scade depth-ul, cu atat mai mult trag de timp, cu toate 
+ca stiu ca voi castiga. Acelasi lucru este valabil si pentru oponent.
+
+	Cand depth este egal cu 0, aplic evaluarea jocului la acest moment. 
+Aceasta evaluare imi returneaza un scor, in functie de care determin cat 
+de buna este mutarea. Euristica se bazeaza pe evaluarea mMacroBoard-ului, 
+in care ma uit la cate sanse de castig are player si la cate sanse de castig are
+opponent, iar in final calculez o valoare reprezentata de niste scoruri asociate 
+blocurilor din matrice. De exemplu, am 3 pentru colturi, 4 pentru 
+centru si 2 pentru restul blocurilor.
+
+	La final scad aceste doua scoruri(player - opponent) si diferenta o adun la 
+aceasta valoare. Rezultatul il inmultesc cu o valoare data de mine, deoarece 
+valoarea data de evaluarea mMacroBoard-ului trebuie sa fie superioara fata de cea 
+data de evaluarea patratelor din mBoard. Aceeasi idee de calculare a scorului, se aplica 
+si pentru cele 9 patrate din mMacroBoard. La fel ca la calcularea scorului pentru 
+mMacroboard, si aici calculez o valoare asociata fiecarui bloc 3x3 in functie de acele 
+valori asociate colturilor, centrului, etc. Valoarea data de evaluarea fiecarui patrat o 
+inmultesc cu o valoare asociata patratului ca mai sus. La final, adun scorul dat de 
+evaluarea mMacroBoard-ului cu scorul dat de evaluarea celor 9 patrate din mMacroBoard.
